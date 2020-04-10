@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {Route,BrowserRouter as Router,Switch} from 'react-router-dom';
+import Main from './components/Main';
+import Error from './components/404';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <>
+        <nav className="navbar navbar-expand navbar-light bg-faded" id="nav" />
+        <div id="reserve_title" />
+        <div className="row head1">
+        </div>
+        <div className="row">
+          <div className="col-md-3">
+            <div className="row" id="top_row">
+              <br />
+              <br />
+            </div>
+            <div className="row" />
+          </div>
+          <div className="col-md-6">
+            <div id="main_form">
+              <Main />
+            </div>
+          </div>
+          <div className="col-md-3">
+            <div className="row" id="top_row">
+              <br />
+              <br />
+            </div>
+            <div className="row" />
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
+const FinalApp = props => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route component={Error} />
+      </Switch>
+    </Router>
+  );
+};
 export default App;
